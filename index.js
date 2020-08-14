@@ -30,7 +30,10 @@ var budgetController = (function () {
   return {
     addItem: function (type, des, val) {
       var newItem, ID;
-      ID = data.allItems[type][data];
+
+      //new id
+      ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
+      //new item depending for either new expenses or incoome
       if (type === "exp") {
         newItem = new Expense(ID, des, val);
       } else if (type === "inc") {
@@ -38,6 +41,7 @@ var budgetController = (function () {
       } else {
         console.log(error, "error");
       }
+      //adds to DS
       data.allItems[type].push(newItem); // type is exp or inc
       return newItem;
     },
@@ -77,7 +81,8 @@ var controller = (function (budgetControl, UICtrl) {
   };
 
   var ctrlAddItem = function () {
-    var input = UICtrl.getInput;
+    var input = UICtrl.getInput();
+    budgetControl.addItem();
   };
   return {
     init: function () {
