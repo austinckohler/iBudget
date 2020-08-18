@@ -92,3 +92,5 @@ var controller = (function (budgetControl, UICtrl) {
 })(budgetController, UIController);
 
 controller.init();
+// quick look at tomorrows stuff.
+console.log("test", budgetController);
